@@ -3,12 +3,15 @@ import { ReactECharts, ReactEChartsProps } from "../components/React-ECharts";
 
 import RangePicker from "../components/RangePicker"
 import BasicSelect from "../components/BasicSelect"
+import BasicButton from "../components/BasicButton"
 import BasicTextField from "../components/BasicTextField"
 
 // TODO: uzmi graph iz GET jsona
 var graph = require('../les-miserables.json');
 
 export default function EChartsPage() {
+
+  // TODO: populisati ovaj Option sa data
   const option: ReactEChartsProps["option"] = {
     title: {
       text: 'Les Miserables',
@@ -76,6 +79,7 @@ export default function EChartsPage() {
         <BasicSelect/>
         <BasicTextField/>
         <RangePicker/>
+        <BasicButton/>
       </div>
       <div style={styles.echarts}>
         <ReactECharts option={option} />
