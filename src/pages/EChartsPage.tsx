@@ -9,11 +9,11 @@ import BasicTextField from "../components/BasicTextField"
 // TODO: uzmi graph iz GET jsona
 var graph = require('../les-miserables.json');
 var linksList: any = [];
-var linksLenght = Object.keys(graph.links).length;
+var linksLength = Object.keys(graph.links).length;
 
 export default function EChartsPage() {
   graph.links.forEach((element: { source: any; target: any; }) => {
-    var trololo = {
+    var link = {
       source: element.source,
       target: element.target,
       lineStyle: {
@@ -24,8 +24,8 @@ export default function EChartsPage() {
       
     }
 
-    if(linksLenght > linksList.length)
-      linksList.push(trololo);
+    if(linksLength > linksList.length)
+      linksList.push(link);
   })
 
   // TODO: populisati ovaj Option sa data
@@ -36,7 +36,9 @@ export default function EChartsPage() {
       top: 'top',
       left: 'center'
     },
-    tooltip: {},
+    tooltip: {
+      show: false
+    },
     legend: [
       {
         // selectedMode: 'single',
@@ -75,16 +77,18 @@ export default function EChartsPage() {
   const styles = {
     echarts: {
       position: 'relative',
-      height: '90vh',
-      overflow: 'hidden'
+      height: '84vh',
+      overflow: 'hidden',
+      margin: "16px"
     },
     box: {
-      padding: '30px'
     },
     pickers: {
       display: 'flex',
       alignItems: 'center',
-      justifyContent: 'left'
+      justifyContent: 'left',
+      backgroundColor: "rgb(232,232,232)",
+      padding: "16px"
     }
   } as const;
 

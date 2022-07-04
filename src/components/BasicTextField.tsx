@@ -3,6 +3,9 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 
 export default function BasicTextField() {
+
+  const [source] = React.useState('COVID');
+
   return (
     <Box
       component="form"
@@ -12,7 +15,7 @@ export default function BasicTextField() {
       noValidate
       autoComplete="off"
     >
-      <TextField id="keyword-input" label="Input keyword" variant="outlined" />
+      <TextField id="keyword-input" label="Input keyword" variant="outlined" value={source}/>
     </Box>
   );
 }
