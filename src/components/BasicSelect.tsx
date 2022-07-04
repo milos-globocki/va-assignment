@@ -6,7 +6,7 @@ import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 
 export default function BasicSelect() {
-  const [source, setSource] = React.useState('10');
+  const [source, setSource] = React.useState('0');
 
   const handleChange = (event: SelectChangeEvent) => {
     setSource(event.target.value as string);
@@ -25,9 +25,13 @@ export default function BasicSelect() {
         >
 
           {/* TODO: izlistaj ajteme sa bekenda ovdje */}
-          <MenuItem value={10}>DZOMBA TV</MenuItem>
-          <MenuItem value={20}>RADIO-TALASI STASA</MenuItem>
-          <MenuItem value={30}>24H KEBAB FITNES SOMA</MenuItem>
+          <MenuItem value={0}>All sources</MenuItem>
+          <MenuItem value={10}>Guardian</MenuItem>
+          <MenuItem value={20}>BBC</MenuItem>
+          <MenuItem value={30}>The Sun</MenuItem>
+          <MenuItem value={40}>Daily Mail</MenuItem>
+          <MenuItem value={50}>The Times</MenuItem>
+
         </Select>
       </FormControl>
     </Box>

@@ -17,10 +17,11 @@ export default function EChartsPage() {
       source: element.source,
       target: element.target,
       lineStyle: {
-        color: 'source',
+        color: 'color',
         curveness: 0,
-        width: element.source / 10
-      }
+        width: 33 - element.source * 3
+      },
+      
     }
 
     if(linksLenght > linksList.length)
@@ -30,10 +31,10 @@ export default function EChartsPage() {
   // TODO: populisati ovaj Option sa data
   const option: ReactEChartsProps["option"] = {
     title: {
-      text: 'Stasa, Dzomba i Milos',
-      subtext: 'Mi smo tri glupana',
-      // top: 'bottom',
-      // left: 'right'
+      text: 'Overview of most related words to COVID',
+      subtext: 'Source: Guardian',
+      top: 'top',
+      left: 'center'
     },
     tooltip: {},
     legend: [
@@ -41,14 +42,15 @@ export default function EChartsPage() {
         // selectedMode: 'single',
         data: graph.categories.map(function (a: any) {
           return a.name;
-        })
+        }),
+        top: 60
       }
     ],
     animationDuration: 1500,
     animationEasingUpdate: 'quinticInOut',
     series: [
       {
-        name: 'Les Miserables',
+        name: 'Number of articles in specified time frame',
         type: 'graph',
         layout: 'none',
         data: graph.nodes,
@@ -63,7 +65,7 @@ export default function EChartsPage() {
         emphasis: {
           focus: 'adjacency',
           lineStyle: {
-            width: 10
+            color: "#FF7A00"
           }
         }
       }
@@ -73,7 +75,7 @@ export default function EChartsPage() {
   const styles = {
     echarts: {
       position: 'relative',
-      height: '70vh',
+      height: '90vh',
       overflow: 'hidden'
     },
     box: {
