@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { ReactECharts, ReactEChartsProps } from "../components/React-ECharts";
 
 import RangePicker from "../components/RangePicker"
@@ -8,16 +8,32 @@ import BasicTextField from "../components/BasicTextField"
 
 // TODO: uzmi graph iz GET jsona
 var graph = require('../les-miserables.json');
+var linksList: any = [];
+var linksLenght = Object.keys(graph.links).length;
 
 export default function EChartsPage() {
+  graph.links.forEach((element: { source: any; target: any; }) => {
+    var trololo = {
+      source: element.source,
+      target: element.target,
+      lineStyle: {
+        color: 'source',
+        curveness: 0,
+        width: element.source / 10
+      }
+    }
+
+    if(linksLenght > linksList.length)
+      linksList.push(trololo);
+  })
 
   // TODO: populisati ovaj Option sa data
   const option: ReactEChartsProps["option"] = {
     title: {
-      text: 'Les Miserables',
-      subtext: 'Default layout',
-      top: 'bottom',
-      left: 'right'
+      text: 'Stasa, Dzomba i Milos',
+      subtext: 'Mi smo tri glupana',
+      // top: 'bottom',
+      // left: 'right'
     },
     tooltip: {},
     legend: [
@@ -36,16 +52,13 @@ export default function EChartsPage() {
         type: 'graph',
         layout: 'none',
         data: graph.nodes,
-        links: graph.links,
+        links: linksList,
         categories: graph.categories,
         roam: true,
         label: {
-          position: 'right',
+          position: 'inside',
+          show: true,
           formatter: '{b}'
-        },
-        lineStyle: {
-          color: 'source',
-          curveness: 0.3
         },
         emphasis: {
           focus: 'adjacency',
